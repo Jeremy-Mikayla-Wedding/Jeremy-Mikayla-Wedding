@@ -27,6 +27,47 @@ menuLinks.forEach(link => link.addEventListener('click', () => {
   menuButton.setAttribute('aria-expanded', 'false');
 }));
 
+const landingPageImages = [
+  'photos/LandingPageImages/web/Mikayla+Jeremy-102.jpg',
+  'photos/LandingPageImages/web/Mikayla+Jeremy-112.jpg',
+  'photos/LandingPageImages/web/Mikayla+Jeremy-114.jpg',
+  'photos/LandingPageImages/web/Mikayla+Jeremy-129.jpg',
+  'photos/LandingPageImages/web/Mikayla+Jeremy-142.jpg',
+  'photos/LandingPageImages/web/Mikayla+Jeremy-27.jpg',
+  'photos/LandingPageImages/web/Mikayla+Jeremy-63.jpg',
+  'photos/LandingPageImages/web/Mikayla+Jeremy-67.jpg',
+  'photos/LandingPageImages/web/Mikayla+Jeremy-86.jpg',
+  'photos/LandingPageImages/web/Mikayla+Jeremy-91.jpg'
+];
+const heroSlides = [...document.querySelectorAll('.hero-slide')];
+
+if (heroSlides.length === 2 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  let activeSlide = 0;
+  let imageIndex = 0;
+  let isLoading = false;
+
+  setInterval(() => {
+    if (document.hidden || isLoading) return;
+    isLoading = true;
+    const nextImageIndex = (imageIndex + 1) % landingPageImages.length;
+    const nextSlide = activeSlide === 0 ? 1 : 0;
+    const image = new Image();
+
+    image.addEventListener('load', () => {
+      heroSlides[nextSlide].style.backgroundImage = `url('${landingPageImages[nextImageIndex]}')`;
+      heroSlides[nextSlide].classList.add('is-active');
+      heroSlides[activeSlide].classList.remove('is-active');
+      activeSlide = nextSlide;
+      imageIndex = nextImageIndex;
+      isLoading = false;
+    }, { once: true });
+
+    image.addEventListener('error', () => { isLoading = false; }, { once: true });
+
+    image.src = landingPageImages[nextImageIndex];
+  }, 4000);
+}
+
 document.querySelectorAll('.memory-card').forEach(card => card.addEventListener('click', () => {
   const flipped = card.classList.toggle('is-flipped');
   card.setAttribute('aria-pressed', String(flipped));
@@ -176,17 +217,17 @@ dinnerMenuDialog.addEventListener('click', event => {
 
 // Wedding-party profiles: replace the prompts below with each person's real details.
 const partyProfiles = [
-  { name: 'Alexis Wilkinson', role: 'Matron of Honor', photo: 'portrait-1', connection: 'Add how Alexis knows Jeremy & Mikayla.', favorite: 'Add Alexis’s favorite memory with the couple.', superlative: 'Most likely to…' },
-  { name: 'Jordan Scott', role: 'Maid of Honor', photo: 'portrait-2', connection: 'Add how Jordan knows Jeremy & Mikayla.', favorite: 'Add Jordan’s favorite memory with the couple.', superlative: 'Most likely to…' },
-  { name: 'Harley Rogers', role: 'Bridesmaid', photo: 'portrait-3', connection: 'Add how Harley knows Jeremy & Mikayla.', favorite: 'Add Harley’s favorite memory with the couple.', superlative: 'Most likely to…' },
-  { name: 'Maxwell Scott', role: 'Man of Honor', photo: 'portrait-4', connection: 'Add how Maxwell knows Jeremy & Mikayla.', favorite: 'Add Maxwell’s favorite memory with the couple.', superlative: 'Most likely to…' },
-  { name: 'Nick Daleo', role: 'Best Man', photo: 'portrait-5', connection: 'Add how Nick knows Jeremy & Mikayla.', favorite: 'Add Nick’s favorite memory with the couple.', superlative: 'Most likely to…' },
-  { name: 'Wendell Kinnaird', role: 'Groomsman', photo: 'portrait-6', connection: 'Add how Wendell knows Jeremy & Mikayla.', favorite: 'Add Wendell’s favorite memory with the couple.', superlative: 'Most likely to…' },
-  { name: 'Robert Rogers', role: 'Groomsman', photo: 'portrait-7', connection: 'Add how Robert knows Jeremy & Mikayla.', favorite: 'Add Robert’s favorite memory with the couple.', superlative: 'Most likely to…' },
-  { name: 'Daniel Rogers', role: 'Groomsman', photo: 'portrait-8', connection: 'Add how Daniel knows Jeremy & Mikayla.', favorite: 'Add Daniel’s favorite memory with the couple.', superlative: 'Most likely to…' },
-  { name: 'Ellie Rogers', role: 'Flower Girl', photo: 'portrait-9', connection: 'Add a sweet note about Ellie.', favorite: 'Add Ellie’s favorite memory or fun fact.', superlative: 'Most likely to scatter the most petals.' },
-  { name: 'William Rogers', role: 'Ring Bearer', photo: 'portrait-10', connection: 'Add a sweet note about William.', favorite: 'Add William’s favorite memory or fun fact.', superlative: 'Most likely to guard the rings.' },
-  { name: 'Jackson Rogers', role: 'Ring Bearer', photo: 'portrait-11', connection: 'Add a sweet note about Jackson.', favorite: 'Add Jackson’s favorite memory or fun fact.', superlative: 'Most likely to guard the rings.' }
+  { name: 'Alexis Wilkinson', role: 'Matron of Honor', photo: 'portrait-1', connection: 'Lexi is Kayla\'s oldest sister.', favorite: 'Add Alexis’s favorite memory with the couple.', superlative: 'Most likely to…' },
+  { name: 'Jordan Scott', role: 'Maid of Honor', photo: 'portrait-2', connection: 'Jordan is Kayla\'s youngest sister.', favorite: 'Add Jordan’s favorite memory with the couple.', superlative: 'Most likely to…' },
+  { name: 'Maxwell Scott', role: 'Man of Honor', photo: 'portrait-3', connection: 'Max is Kayla\'s brother.', favorite: 'Add Maxwell’s favorite memory with the couple.', superlative: 'Most likely to…' },
+  { name: 'Harley Rogers', role: 'Bridesmaid', photo: 'portrait-4', connection: 'Harley is Jeremy\'s sister.', favorite: 'Add Harley’s favorite memory with the couple.', superlative: 'Most likely to…' },
+  { name: 'Nick Daleo', role: 'Best Man', photo: 'portrait-5', connection: 'Nick is one of Jeremy\'s best friends.', favorite: 'Add Nick’s favorite memory with the couple.', superlative: 'Most likely to…' },
+  { name: 'Wendell Kinnaird', role: 'Groomsman', photo: 'portrait-6', connection: 'Wendell is one of Jermy\'s best friends.', favorite: 'Add Wendell’s favorite memory with the couple.', superlative: 'Most likely to…' },
+  { name: 'Robert Rogers', role: 'Groomsman', photo: 'portrait-7', connection: 'Robert is Jeremy\'s oldest brother.', favorite: 'Add Robert’s favorite memory with the couple.', superlative: 'Most likely to…' },
+  { name: 'Daniel Rogers', role: 'Groomsman', photo: 'portrait-8', connection: 'Daniel is Jeremy\'s brother.', favorite: 'Add Daniel’s favorite memory with the couple.', superlative: 'Most likely to…' },
+  { name: 'Ellie Rogers', role: 'Flower Girl', photo: 'portrait-9', connection: 'Ellie is Jeremy\'s niece.', favorite: 'Add Ellie’s favorite memory or fun fact.', superlative: 'Most likely to scatter the most petals.' },
+  { name: 'William Rogers', role: 'Ring Bearer', photo: 'portrait-10', connection: 'William is Jeremy\'s nephew.', favorite: 'Add William’s favorite memory or fun fact.', superlative: 'Most likely to guard the rings.' },
+  { name: 'Jackson Rogers', role: 'Ring Bearer', photo: 'portrait-11', connection: 'Jackson is Jeremy\'s nephew.', favorite: 'Add Jackson’s favorite memory or fun fact.', superlative: 'Most likely to guard the rings.' }
 ];
 
 const profileDialog = document.createElement('dialog');
@@ -203,7 +244,7 @@ document.querySelectorAll('.party-person').forEach((person, index) => {
   person.setAttribute('role', 'button');
   person.setAttribute('aria-label', `Open ${profile.name}'s profile`);
   const openProfile = () => {
-    profileDialog.innerHTML = `<button class="profile-close" aria-label="Close profile">×</button><div class="profile-photo ${profile.photo}"></div><div class="profile-copy"><p class="eyebrow">${profile.role}</p><h2>${profile.name}</h2><div class="gold-rule"></div><p><b>Part of our story</b>${profile.connection}</p><p><b>Favorite memory</b>${profile.favorite}</p><p><b>Wedding-weekend superlative</b>${profile.superlative || 'Add a playful answer.'}</p></div>`;
+    profileDialog.innerHTML = `<button class="profile-close" aria-label="Close profile">×</button><div class="profile-photo ${profile.photo}"></div><div class="profile-copy"><p class="eyebrow">${profile.role}</p><h2>${profile.name}</h2><div class="gold-rule"></div><p><b>How we know them</b>${profile.connection}</p><p><b>Favorite memory</b>${profile.favorite}</p><p><b>Wedding-weekend superlative</b>${profile.superlative || 'Add a playful answer.'}</p></div>`;
     profileDialog.showModal();
     profileDialog.querySelector('.profile-close').focus();
   };
