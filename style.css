@@ -39,6 +39,7 @@
 .portrait-3 { background-image: url('photos/ProfilePics/Maxwell.png') !important; background-size: 120% auto !important; background-position: 15% top !important; }
 .portrait-4 { background-image: url('photos/ProfilePics/Harley.png') !important; background-size: 160% auto !important; background-position: 58% 22% !important; }
 .portrait-5 { background-image: url('photos/ProfilePics/Nick.jpeg') !important; background-position: center 30% !important; }
+.portrait-6 { background-image: url('photos/ProfilePics/Wendell.png') !important; background-position: center 85% !important; }
 .portrait-9 { background-image: url('photos/ProfilePics/Ellie.jpeg') !important; background-position: center 15% !important; }
 .portrait-7 { background-image: url('photos/ProfilePics/Robert.png') !important; background-size: 150% auto !important; background-position: center 18% !important; }
 .portrait-8 { background-image: url('photos/ProfilePics/Daniel.jpeg') !important; background-position: center 28% !important; }
@@ -51,6 +52,7 @@
 .profile-photo.portrait-2 { background-size: cover !important; background-position: center 15% !important; }
 .profile-photo.portrait-3 { background-size: cover !important; background-position: 55% center !important; }
 .profile-photo.portrait-4 { background-size: cover !important; background-position: center 20% !important; }
+.profile-photo.portrait-6 { background-size: cover !important; background-position: center center !important; }
 
 /* Things To Do photo adjustments */
 :root {
