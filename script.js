@@ -196,7 +196,6 @@ dinnerMenuDialog.innerHTML = `
     <p class="eyebrow">Saturday evening</p>
     <h2>Dinner Menu</h2>
     <div class="gold-rule"></div>
-    <p class="dinner-menu-placeholder">Our dinner selections are coming soon.</p>
     <p>Check back closer to the celebration to see what will be served.</p>
     <p class="dinner-caterer">A farm-to-table dinner thoughtfully prepared by <a href="https://www.jerefarms.com/" target="_blank" rel="noreferrer">Jere Farms <b>↗</b></a></p>
   </div>`;
