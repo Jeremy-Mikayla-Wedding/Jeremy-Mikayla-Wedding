@@ -34,7 +34,6 @@ const landingPageImages = [
   'photos/LandingPageImages/web/Mikayla+Jeremy-118.jpg',
   'photos/LandingPageImages/web/Mikayla+Jeremy-129.jpg',
   'photos/LandingPageImages/web/Mikayla+Jeremy-142.jpg',
-  'photos/LandingPageImages/web/Mikayla+Jeremy-153.jpg',
   'photos/LandingPageImages/web/Mikayla+Jeremy-27.jpg',
   'photos/LandingPageImages/web/Mikayla+Jeremy-63.jpg',
   'photos/LandingPageImages/web/Mikayla+Jeremy-67.jpg',
